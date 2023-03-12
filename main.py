@@ -10,15 +10,18 @@ def parallel_processing(n, m, data):
 
     for i in range(m):
         time = data[i]
-        tr = threads.pop(0)
-        sakums = timee[tr]
-        if output:
-            sakums = max(sakums, output[-1][1])
-        output.append((tr, sakums))
-        timee[tr] = sakums + time
+        if threads:
+            tr = threads.pop(0)
+            sakums = timee[tr]
+            if output:
+                sakums = max(sakums, output[-1][1])
+            output.append((tr, sakums))
+            timee[tr] = sakums + time
 
-        if i < n-1:
-            threads.append(tr)
+            if i < n-1:
+                threads.append(tr)
+        else:
+            break
 
     return output
 
