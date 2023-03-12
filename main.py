@@ -19,8 +19,8 @@ def parallel_processing(n, m, data):
             output.append((tr, sakums))
             timee[tr] = sakums + time
 
-            if i < n-1 and i < m-1:
-                threads.append(tr)
+            # if i < n-1 and i < m-1:
+            threads.append(tr)
         else:
             break
 
