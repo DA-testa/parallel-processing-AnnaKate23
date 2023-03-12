@@ -5,34 +5,24 @@ def parallel_processing(n, m, data):
 
     threads = list(range(n))
     timee = [0] * n
-    i=0
-    pabeigts_process = False
+    
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
     
-    while not pabeigts_process:
-        if i>=m:
-            pabeigts_process = True
-        else:
-            time = data[i]
-            if threads:
-                tr = threads.pop(0)
-                sakums = timee[tr]
-                if output:
-                    sakums = max(sakums, output[-1][1])
-                output.append((tr, sakums))
-                timee[tr] = sakums + time
+    for i in range(m):
+        time = data[i]
+        if threads:
+            tr = threads.pop(0)
+            sakums = timee[tr]
+            if output:
+                sakums = max(sakums, output[-1][1])
+            output.append((tr, sakums))
+            timee[tr] = sakums + time
 
-                if i < n-1 and i < m-1:
-                    threads.append(tr)
-            else:
-            for j in range(n):
-                if timee[j] <= timee[threads[0]]:
-                    output.append((j, timee[j]))
-                    timee[j] += time
-                    threads[0] = j
-                    break
-        i += 1
+            if i < n-1 and i < m-1:
+                threads.append(tr)
+        else:
+            break
 
     return output
 
